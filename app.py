@@ -1,16 +1,24 @@
 from flask import Flask, render_template, jsonify, request
 import random
+import json
 
 app = Flask(__name__)
 
-# Lista de objetos y sus probabilidades
-personajes = [
-    {"nombre": "Silla", "probabilidad": 0.100, "imagen": "imgs/sillaComun.png"},
-    {"nombre": "Llavero", "probabilidad": 0.10, "imagen": "imgs/llavero.png"},
-    {"nombre": "Beca", "probabilidad": 0.1, "imagen": "imgs/beca.png"},
-    {"nombre": "Programador Top", "probabilidad": 0.4, "imagen": "imgs/programador_top.png"},
-]
+# Lista de objetos y sus probabilidades 
+# Cambiar a un archivo .Json 
 
+with open('cartas.json', 'r') as f:
+    personajes = json.load(f)
+    # Endpoint para eliminar un objeto seleccionado
+    @app.route('/eliminar', methods=['POST'])
+    def eliminar():
+        nombre = request.json.get('nombre')
+        if nombre in objetos_seleccionados:
+            objetos_seleccionados.remove(nombre)
+            return jsonify({'status': 'success', 'message': f'{nombre} eliminado.'})
+        else:
+            return jsonify({'status': 'error', 'message': f'{nombre} no encontrado.'})
+    
 # Lista para almacenar los objetos seleccionados
 objetos_seleccionados = []
 

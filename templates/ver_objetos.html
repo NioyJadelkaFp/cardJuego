@@ -8,19 +8,62 @@
 
 {% block content %}
 
-<style>
-    img{
-        image-rendering: pixelated;
-    }
-</style>
-    <div class="objetos-class">
-        {% for objeto in objetos %}
-            <div class="objeto">
-                <p>{{ objeto.nombre }}</p>
-                <img src="{{ url_for('static', filename=objeto.imagen) }}" alt="{{ objeto.nombre }}">
-            </div>
-        {% else %}
-            <p>No has seleccionado ningún objeto aún.</p>
-        {% endfor %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cartas.css')}}">
+</head>
+    
+<div class="objetos-class">
+    {% for objeto in objetos %}
+        <div class="objeto">
+            <p>{{ objeto.nombre }}</p>
+            <img src="{{ url_for('static', filename=objeto.imagen) }}" alt="{{ objeto.nombre }}">
+            <button class="Delete" onclick="confirmarEliminar('{{ objeto.nombre }}')">Eliminar</button>
+        </div>
+    {% else %}
+        <p>No has seleccionado ningún objeto aún.</p>
+    {% endfor %}
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p style="margin: 20px;">¿Estás seguro de que deseas eliminar este objeto?</p>
+        <button id="confirmDelete">Eliminar Carta</button>
+        <button onclick="closeModal()">No eliminar carta</button>
     </div>
+</div>
+
+<script>
+    let objetoAEliminar = '';
+
+    function confirmarEliminar(nombre) {
+        objetoAEliminar = nombre;
+        document.getElementById('myModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    document.getElementById('confirmDelete').onclick = function() {
+        eliminarObjeto(objetoAEliminar);
+    };
+
+    function eliminarObjeto(nombre) {
+        fetch('/eliminar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre: nombre })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                location.reload();
+            }
+        });
+        closeModal();
+    }
+</script>
 {% endblock %}

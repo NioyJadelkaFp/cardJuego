@@ -1,30 +1,44 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jugar.css')}}">
+</head>
 
-    <script>
-        $(document).ready(function(){
-            $('#alazar').click(function(){
-                $.ajax({
-                    url: '/alazar',
-                    type: 'POST',
-                    success: function(data) {
-                        $('#objeto-seleccionado').html('<h2>Te tocó el objeto: ' + data.nombre + '</h2>');
-                        $('#objeto-seleccionado').append('<img src="/static/' + data.imagen + '" alt="' + data.nombre + '" width="200">');
-                    }
-                });
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#alazar').click(function(){
+            var boton = $(this);
+            boton.prop('disabled', true);  // Deshabilitar el botón
+
+            $.ajax({
+                url: '/alazar',
+                type: 'POST',
+                success: function(data) {
+                    $('#objeto-seleccionado').html('<h2>Te tocó el objeto: ' + data.nombre + '</h2>');
+                    $('#objeto-seleccionado').append('<img src="/static/' + data.imagen + '" alt="' + data.nombre + '" width="200">');
+                    
+                    // Mover el botón hacia abajo
+                    boton.animate({ top: '+=50px' }, 'slow');
+
+                    // Reproducir sonido
+                    var audio = new Audio("{{ url_for('static', filename='audio/newCard.mp3') }}");
+                    audio.play();
+                }
             });
+
+            // Habilitar el botón después de un retraso de 3 segundos
+            setTimeout(function() {
+                boton.prop('disabled', false);
+            }, 3000);
         });
-    </script>
+    });
+</script>
 
-    <h1>Selecciona un Objeto</h1>
-    <button id="alazar" class="btn">Alazar</button>
-
-    <div id="objeto-seleccionado"></div>
-
-    </div>
+<div id="objeto-seleccionado" style="width: 100%; height: 60%; image-rendering: pixelated;
+    image-rendering: crisp-edges;"></div>
+<button id="alazar" class="btn">Alazar</button>
 
 {% endblock %}

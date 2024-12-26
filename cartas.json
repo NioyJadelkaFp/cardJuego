@@ -1,0 +1,9 @@
+[
+    {"nombre": "Silla Común", "probabilidad": 0.70, "imagen": "imgs/sillaComun.png"},
+    {"nombre": "Silla Epica", "probabilidad": 0.30, "imagen": "imgs/sillaEpica.png"},
+    {"nombre": "Silla Legendaria", "probabilidad": 0.09, "imagen": "imgs/sillaLegendaria.png"},
+    {"nombre": "Silla ADN", "probabilidad": 0.005, "imagen": "imgs/sillaAdn.png"},
+    {"nombre": "Silla Sketch", "probabilidad": 0.0001, "imagen": "imgs/sillaSketch.png"}
+
+    
+]

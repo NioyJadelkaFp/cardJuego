@@ -1,0 +1,38 @@
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#alazar {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#alazar:hover {
+    background-color: #0056b3;
+}
+
+#objeto-seleccionado {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#objeto-seleccionado h2 {
+    color: #333;
+}
+
+#objeto-seleccionado img {
+    margin-top: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    width: 20%;
+}

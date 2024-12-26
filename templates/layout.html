@@ -7,6 +7,17 @@
     <title>EphemeralPick</title>
 </head>
 <body>
+    
+    <div class="demo-notice" style=" color: red; padding: 10px; border: 2px ; text-align: center;">
+        <p>Esta web está en versión demo. Algunas funcionalidades pueden no estar disponibles.</p>
+    </div>
+    
+    <main>
+        {% block content %}
+        <!-- El contenido de las páginas que extienden esta plantilla será insertado aquí -->
+        {% endblock %}
+    </main>
+
     <nav class="Menu">
         <ul>
             <li><a href="/">Jugar</a></li>
@@ -14,11 +25,9 @@
             <li><a href="/descripcion">Descripción</a></li>
         </ul>
     </nav>
-    
-    <main>
-        {% block content %}
-        <!-- El contenido de las páginas que extienden esta plantilla será insertado aquí -->
-        {% endblock %}
-    </main>
+
+    <script>
+        document.cookie = "username=John Doe; expires=" + new Date(new Date().setMonth(new Date().getMonth() + 1)).toUTCString() + "; path=/";
+    </script>
 </body>
 </html>
