@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.btn {
+    background-color: blue;
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: darkblue;
+}
+
+.btn-rojo {
+    background-color: red;
+}
+
+.objeto {
+    margin: 20px;
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+}
+
+.objetos-class {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Bootstrap classes to improve layout */
+.container {
+    margin-top: 50px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-md-4 {
+    flex: 1 0 30%;
+    max-width: 30%;
+    padding: 15px;
+}
+
+.card {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+}
+
+.card-title {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.card-body {
+    padding: 10px;
+    background-color: #222;
+}
+
+
+
+/* Estilos para el menú */
+.Menu {
+    background-color: #343a40; /* Fondo oscuro */
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.Menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Menu li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.Menu a {
+    color: #f8f9fa; /* Texto blanco */
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+    display: inline-block;
+    border-radius: 5px;
+}
+
+/* Efecto hover en los enlaces */
+.Menu a:hover {
+    background-color: #007bff; /* Fondo azul */
+    color: white; /* Texto blanco */
+    text-decoration: none;
+}
+
+/* Enlace activo */
+.Menu a.active {
+    background-color: #28a745; /* Fondo verde para el enlace activo */
+    color: white;
+}
+
+/* Enlaces en el móvil */
+@media (max-width: 767px) {
+    .Menu ul {
+        text-align: center;
+    }
+
+    .Menu li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .Menu a {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+}

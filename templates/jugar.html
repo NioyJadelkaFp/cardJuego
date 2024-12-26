@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#alazar').click(function(){
+                $.ajax({
+                    url: '/alazar',
+                    type: 'POST',
+                    success: function(data) {
+                        $('#objeto-seleccionado').html('<h2>Te tocó el objeto: ' + data.nombre + '</h2>');
+                        $('#objeto-seleccionado').append('<img src="/static/' + data.imagen + '" alt="' + data.nombre + '" width="200">');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <h1>Selecciona un Objeto</h1>
+    <button id="alazar" class="btn">Alazar</button>
+
+    <div id="objeto-seleccionado"></div>
+
+    </div>
+
+{% endblock %}

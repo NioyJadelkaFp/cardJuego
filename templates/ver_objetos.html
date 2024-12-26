@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}Objetos Seleccionados{% endblock %}
+
+{% block header %}
+<h1>Tus Objetos Seleccionados</h1>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    img{
+        image-rendering: pixelated;
+    }
+</style>
+    <div class="objetos-class">
+        {% for objeto in objetos %}
+            <div class="objeto">
+                <p>{{ objeto.nombre }}</p>
+                <img src="{{ url_for('static', filename=objeto.imagen) }}" alt="{{ objeto.nombre }}">
+            </div>
+        {% else %}
+            <p>No has seleccionado ningún objeto aún.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
